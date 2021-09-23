@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="FB_DataToFileEx" Id="{c3a664cd-81aa-4e13-8e80-224ebd0401a3}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_DataToFileEx
 VAR_INPUT
@@ -70,7 +70,7 @@ CASE iStep OF
 	0:	(* idle wait for error message to log*)
 		IF (udiWriteBufferAddPos <> udiWriteBufferWritePos) THEN
 			_sFileRoot:=sFileRoot;
-			IF _sFileRoot[Len(_sFileRoot)-1] <> 92 THEN
+			IF _sFileRoot[Len(_sFileRoot)-1] <> 92 THEN //92 Ascii码是\ 
 				_sFileRoot:=CONCAT(_sFileRoot,'\');
 			END_IF 
 			xBusy := TRUE;
