@@ -92,9 +92,9 @@ CASE iStep OF
 		IF NOT xBusyFileExistCheck THEN
 			IF NOT xErrorFileExistCheck THEN
 				IF xFileExist THEN
-					xFileHeaderNeeded:=FALSE;
+					xFileHeaderNeeded:=FALSE; //Fileheader存在，不需要额外增加
 				ELSE
-					xFileHeaderNeeded:=TRUE;
+					xFileHeaderNeeded:=TRUE; //FileHeader需要添加
 				END_IF
 				iStep:=10;
 			ELSE
@@ -191,7 +191,7 @@ CASE iStep OF
 				xError := TRUE;
 				iStep:=1000;
 			ELSE
-				IF udiWriteBufferAddPos = udiWriteBufferWritePos THEN
+				IF udiWriteBufferAddPos = udiWriteBufferWritePos THEN //上次没写完的话继续写
 					iStep := iStep+10;
 				ELSE
 					iStep:=iStep-10;
@@ -200,6 +200,7 @@ CASE iStep OF
 		END_IF
 
 	50:	(*Get File data Size information*)
+	  // The function block "Fb_FileTell" gets the current position of the file pointer. The position is expressed as an offset relative to the beginning of the stream
 		fbFileTell(  bExecute := FALSE  );
 		fbFileTell( 		hFile:=hSrcFile,
 						tTimeout := T#1000ms,
@@ -829,7 +830,9 @@ M_LogAddColumn(sColumn);
       <LineId Id="333" Count="0" />
       <LineId Id="335" Count="6" />
       <LineId Id="334" Count="0" />
-      <LineId Id="3" Count="230" />
+      <LineId Id="3" Count="133" />
+      <LineId Id="396" Count="0" />
+      <LineId Id="137" Count="96" />
       <LineId Id="235" Count="36" />
       <LineId Id="2" Count="0" />
     </LineIds>
