@@ -66,6 +66,19 @@ END_VAR
 // Increase udiBufferSize if you are writing large amounts of data and notice missing data in file.
 // Header is automaticly created as needed.
 
+
+(*
+Auto Header Generation.
+
+Auto Folder creation if folder does not exist.
+
+High speed writing up to maximum TwinCAT tick speed. Data is buffered between hard drive writes. User does not have to do anything to take advantage of this.
+
+Everything is wrapped into single function block for easy sharing.
+
+Uses simple Methods for adding text and CSV data to file.
+*)
+
 CASE iStep OF
 	0:	(* idle wait for error message to log*)
 		IF (udiWriteBufferAddPos <> udiWriteBufferWritePos) THEN
@@ -829,6 +842,11 @@ M_LogAddColumn(sColumn);
     <LineIds Name="FB_DataToFileEx">
       <LineId Id="333" Count="0" />
       <LineId Id="335" Count="6" />
+      <LineId Id="398" Count="1" />
+      <LineId Id="397" Count="0" />
+      <LineId Id="402" Count="7" />
+      <LineId Id="401" Count="0" />
+      <LineId Id="400" Count="0" />
       <LineId Id="334" Count="0" />
       <LineId Id="3" Count="133" />
       <LineId Id="396" Count="0" />
