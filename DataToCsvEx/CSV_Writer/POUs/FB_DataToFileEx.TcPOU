@@ -67,7 +67,7 @@ END_VAR
 // Header is automaticly created as needed.
 
 
-(*
+(* Creating CSV or raw text files.
 Auto Header Generation.
 
 Auto Folder creation if folder does not exist.
